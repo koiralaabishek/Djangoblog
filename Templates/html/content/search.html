@@ -1,0 +1,27 @@
+{% extends 'base.html'%} 
+{% block content %}
+
+<div class="container">
+{% if blogs %}
+{% for i in blogs %}
+
+
+
+<div class="card mt4" >
+    <img src="{{i.featured_image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><a href="{% url 'post_detail' i.slug %}" class="text-dark">{{i.title}}</a></h5>
+      <p class="card-text">{{i.blog_body}}</p>
+      
+    </div>
+  </div>
+
+{% endfor%}
+
+{% else %}
+<p>No post found</p>
+{% endif %}
+
+
+</div>
+{% endblock %}

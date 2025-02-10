@@ -1,0 +1,29 @@
+
+{% extends 'base.html'%}
+{% block content %}
+
+
+<div class="container">
+
+<div class="row">
+    {% for post in posts%}
+    <div class="col-md-6">
+        <div class="card mt-4" >
+            <img src="{{post.featured_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}" class="text-dark">{{post.title}}</a></h5>
+              <p class="card-text">{{post.blog_body}} </p>
+              <div class="card-footer">
+                <small class="text-muted">{{post.created_at}} | {{post.author}}</small>
+            </div>
+            </div>
+          </div>
+    </div>
+    {% endfor%}
+</div>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html'%} 
+{% block content %}
+
+<div class="container-fluid">
+
+
+
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        {% for feature in featured_posts %}
+       
+      <div class="carousel-item active">
+        <img src="{{feature.featured_image.url}}" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{feature.title}}</h5>
+          <p>{{feature.short_description}}</p>
+        </div>
+      </div>
+     
+   
+      {% endfor %}
+
+   
+      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<!-- end of carsouel -->
+</div>
+<!-- end of container -->
+
+
+<div class="container">
+    <h1 class="mt-4">Feature Post</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                {% for post in posts %}
+               
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img src="{{post.featured_image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> <a href="{% url 'post_detail' post.slug %}">{{post.title}}</a></h5>
+                            <p>{{post.short_description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">{{post.created_at}} | {{post.author}}</small>
+                            </div>
+
+                    </div>
+                </div>
+              
+                {% endfor %}
+{% endblock %}
