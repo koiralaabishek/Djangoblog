@@ -29,8 +29,9 @@
         </form>
 {% else %}
 
-<span> You are logged in as {{user}}</span>
-<span><a href="{% url 'logout' %}">Logout</a></span>
+{% comment %} <span> You are logged in as {{user}}</span> {% endcomment %}
+<span ><a href="{% url 'dashboard' %}" class="m-2">Dashboard </a></span>
+<span><a href="{% url 'logout' %}"> Logout</a></span>
 {% endif %}
 
       </div>

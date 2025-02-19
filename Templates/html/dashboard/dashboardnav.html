@@ -1,0 +1,8 @@
+<nav class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
+  <span>Login as {{user}}</span>
+    <a class="nav-link text-dark {% if '/dashboard/' == request.path %} bg-primary text-white{% endif %}" href="{% url 'dashboard'%}">Dashboard</a>
+    <a class="nav-link  text-dark {% if '/category/' in request.path %} bg-primary text-white {% endif %}" href="{% url 'category'%}">Category</a>
+    <a class="nav-link  text-dark {% if '/post/' in request.path %} bg-primary text-white {% endif %} " href="{% url 'post'%}">Post</a>
+    <a class="nav-link  text-dark {% if '/logout/' in request.path %} bg-primary  text-white {% endif %}" href="{% url 'logout'%}">Logout</a>
+   
+  </nav>
