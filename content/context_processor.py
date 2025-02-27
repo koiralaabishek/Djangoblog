@@ -6,6 +6,12 @@ def categories(request):
     return {'categories':categories}
 
 
+def posts(request):
+    from content.models import Post
+    posts = Post.objects.filter(status=True)
+    return {'posts':posts}
+
+
 # def posts(request):
 #     from content.models import Post
 #     posts = Post.objects.filter(status=True)

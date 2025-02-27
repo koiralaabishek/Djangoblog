@@ -14,8 +14,40 @@
         </div>
 
         <div class="col-md-9">
-          <h2>Post section</h2>
-    </div>
+            <h2>Category</h2>
+  
+              <a href="{% url 'add_post' %}" class="btn btn-primary ">Add post</a>
+  
+  
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Featured</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for post in blogs %}
+                <tr>
+             
+                  <td>{{forloop.counter}}</td>
+                  <td>{{post.title}}</td>
+                  <td>{{post.category}}</td>
+                  <td>{{post.author}}</td>
+                  <td>{% if post.status %} published {%else%} Not Published {% endif %}</td>
+                  <td>{% if post.is_featured %} Featured {%else%} Not Featured {%endif%}</td>
+                  <td><span><button class=" btn bg-primary m-2 text-white"> <a href="{% url 'edit_post' post.id %}" class="text-white "> Edit</a></span> <span><button class=" btn bg-warning"><a href="{% url 'delete_post' post.id %}">delete</a></span></td>
+                </tr>
+                  {% endfor %}
+                 
+              </tbody>
+            </table>
+      </div>
 
 
 {% endblock %}
